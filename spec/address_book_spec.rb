@@ -103,4 +103,36 @@ end
     end
   end
 
+  describe "#import_from_csv_2" do
+    it "imports the correct number of entries" do
+
+      book.import_from_csv_2("entries_2.csv")
+      book_size = book.entries.size
+  
+      expect(book_size).to eq 3
+    end 
+
+    it "imports the 1st entry" do
+      book.import_from_csv_2("entries_2.csv")
+      entry_one = book.entries[0]
+  
+      check_entry(entry_one, "Bilbo", "555-555-1345", "bilbo@blocmail.com")
+    end
+  
+    it "imports the 2nd entry" do
+      book.import_from_csv_2("entries_2.csv")
+     
+      entry_two = book.entries[1]
+      check_entry(entry_two, "Frodo", "555-555-1456", "frodo@blocmail.com")
+    end
+  
+    it "imports the 3rd entry" do
+      book.import_from_csv_2("entries_2.csv")
+     
+      entry_three = book.entries[2]
+      check_entry(entry_three, "Gandalf", "555-555-1567", "gandalf@blocmail.com")
+    end
+
+  end 
+
 end
